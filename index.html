@@ -1,0 +1,952 @@
+<!doctype html>
+<html lang="zh-CN" class="no-js scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>代挂机器人使用说明 · 小米钱包 / 小米社区</title>
+    <meta
+      name="description"
+      content="代挂机器人使用说明：小米钱包、小米社区两个项目的命令速查、操作步骤、每日运行时间与常见问题。"
+    />
+    <meta name="theme-color" content="#060a13" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="代挂机器人使用说明 · 小米钱包 / 小米社区" />
+    <meta
+      property="og:description"
+      content="三个代挂项目的命令速查、操作步骤、每日运行时间与常见问题，一页看完。"
+    />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f97316'/%3E%3Ccircle cx='16' cy='16' r='5' fill='none' stroke='white' stroke-width='2.4'/%3E%3Cpath d='M16 6v3M16 23v3M6 16h3M23 16h3M9 9l2 2M21 21l2 2M23 9l-2 2M11 21l-2 2' stroke='white' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E"
+    />
+    <link rel="stylesheet" href="./assets/site.css" />
+  </head>
+
+  <body class="bg-slate-50 font-sans text-slate-800 antialiased">
+
+  <!-- 进入站点强制阅读的免责声明 -->
+  <div id="gate" class="fixed inset-0 z-[100] flex items-center justify-center bg-ink-950/95 p-4 backdrop-blur-sm">
+    <div class="max-h-[88vh] w-full max-w-lg overflow-y-auto rounded-3xl border border-white/10 bg-ink-900 p-6 shadow-2xl sm:p-7">
+      <p class="text-xs font-semibold uppercase tracking-[0.2em] text-amber-400">Disclaimer</p>
+      <h2 class="mt-2 text-2xl font-bold text-white">风险提示与免责声明</h2>
+
+      <div class="mt-4 rounded-xl border border-red-500/30 bg-red-500/10 p-4 text-sm leading-6 text-red-100">
+        <strong class="text-red-300">代挂有风险：</strong>存在账号被风控、限制或封禁（黑号）的概率。购买的会员时长请尽早使用；如不愿承担该风险，请申请退款。继续代挂即表示你已知晓并自行承担全部风险。
+      </div>
+
+      <ol class="mt-4 max-h-56 space-y-2 overflow-y-auto pr-1 text-xs leading-6 text-slate-300">
+        <li>1. 脚本都是从 GitHub / 互联网里找的，或者都是 AI 写的。</li>
+        <li>2. 内容仅供学习，禁止用于其他用途；下载后 24 小时内请完全删除，严禁产生利益链。</li>
+        <li>3. 作者对任何问题概不负责，包括脚本错误导致的任何损失或损害。</li>
+        <li>4. 作者对隐私泄漏或其他后果概不负责；如认为侵权请提供权属证明，我们将删除相关内容。</li>
+        <li>5. 任何查看或使用本项目脚本的人，都应仔细阅读本声明。</li>
+        <li>6. 请遵守相关法律法规，尊重目标平台的服务条款。</li>
+      </ol>
+
+      <button id="gate-btn" type="button" disabled
+        class="mt-5 w-full cursor-not-allowed rounded-xl bg-brand-500/40 px-4 py-3 text-sm font-semibold text-white/60 transition">
+        请仔细阅读 <span id="gate-count">10</span> 秒…
+      </button>
+    </div>
+  </div>
+
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-slate-900 focus:px-4 focus:py-2 focus:text-white"
+      >跳到正文</a
+    >
+
+    <!-- ======================= 顶栏 ======================= -->
+    <header class="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-md">
+      <div class="mx-auto flex h-16 max-w-7xl items-center gap-6 px-4 sm:px-6 lg:px-8">
+        <a href="#top" class="flex items-center gap-2.5">
+          <span
+            class="grid size-9 place-items-center rounded-xl bg-gradient-to-br from-brand-500 to-amber-400 text-white shadow-sm"
+          >
+            <svg viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true">
+              <path
+                d="M12 3v3m0 12v3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M3 12h3m12 0h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8" />
+            </svg>
+          </span>
+          <span class="text-[15px] font-semibold tracking-tight text-slate-900">代挂机器人</span>
+        </a>
+
+        <nav aria-label="页面导航" class="hidden lg:block">
+          <ul class="flex items-center gap-6 text-sm">
+            <li><a class="nav-link text-slate-600" href="#start">使用前必读</a></li>
+            <li><a class="nav-link text-slate-600" href="#menu">总菜单</a></li>
+            <li><a class="nav-link text-slate-600" href="#wallet">小米钱包</a></li>
+            <li><a class="nav-link text-slate-600" href="#community">小米社区</a></li>
+            <li><a class="nav-link text-slate-600" href="#faq">常见问题</a></li>
+          </ul>
+        </nav>
+
+        <div class="ml-auto flex items-center gap-3">
+          <a
+            href="#menu"
+            class="hidden rounded-lg bg-slate-900 px-4 py-2 text-sm font-medium text-white transition hover:bg-slate-700 sm:block"
+            >命令速查</a
+          >
+          <button
+            id="menu-btn"
+            type="button"
+            class="grid size-10 place-items-center rounded-lg border border-slate-200 text-slate-600 transition hover:bg-slate-50 lg:hidden"
+            aria-controls="mobile-nav"
+            aria-expanded="false"
+          >
+            <span class="sr-only">打开菜单</span>
+            <svg viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true">
+              <path
+                d="M4 7h16M4 12h16M4 17h16"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-nav" class="hidden border-t border-slate-200 bg-white lg:hidden">
+        <ul class="mx-auto grid max-w-7xl gap-1 px-4 py-3 text-sm sm:px-6">
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-50" href="#start">使用前必读</a></li>
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-50" href="#menu">总菜单</a></li>
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-50" href="#wallet">第二节 · 小米钱包</a></li>
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-50" href="#community">第三节 · 小米社区</a></li>
+          <li><a class="block rounded-lg px-3 py-2 hover:bg-slate-50" href="#faq">第四节 · 常见问题</a></li>
+        </ul>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- ======================= Hero ======================= -->
+      <section id="top" class="hero-surface relative isolate overflow-hidden">
+        <div class="hero-grid pointer-events-none absolute inset-0 -z-10"></div>
+
+        <div class="relative mx-auto max-w-7xl px-4 pb-16 pt-14 sm:px-6 sm:pb-20 sm:pt-16 lg:px-8">
+          <div class="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+          <div>
+            <p
+              class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3.5 py-1.5 text-xs font-medium text-brand-200 backdrop-blur"
+            >
+              <span class="relative flex size-1.5">
+                <span class="absolute inline-flex size-full animate-ping rounded-full bg-brand-400 opacity-75"></span>
+                <span class="relative inline-flex size-1.5 rounded-full bg-brand-400"></span>
+              </span>
+              闲鱼代挂 · 使用说明
+            </p>
+
+            <h1 class="mt-6 text-4xl font-bold leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl">
+              代挂机器人<br />
+              <span class="bg-gradient-to-r from-brand-300 via-amber-200 to-brand-400 bg-clip-text text-transparent"
+                >使用说明</span
+              >
+            </h1>
+
+            <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 sm:text-lg">
+              小米钱包、小米社区两个项目，每天定时在云端自动跑完，跑完把结果私聊推给你。
+              这份页面把命令、步骤、注意事项一次讲清楚——买哪个项目，就看哪一节。
+            </p>
+
+            <div class="mt-9 flex flex-wrap items-center gap-3">
+              <a
+                href="#start"
+                class="inline-flex items-center gap-2 rounded-xl bg-brand-500 px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-brand-500/25 transition hover:bg-brand-400"
+              >
+                先看使用前必读
+                <svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <a
+                href="#menu"
+                class="inline-flex items-center gap-2 rounded-xl border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition hover:bg-white/10"
+              >
+                查看命令速查
+              </a>
+            </div>
+
+          </div>
+
+          <!-- 右侧：动态壁纸预览 -->
+          <div class="relative hidden flex-col items-center gap-5 lg:flex">
+            <div class="absolute -inset-10 -z-10 rounded-full bg-brand-500/20 blur-3xl"></div>
+
+            <div class="relative">
+              <div class="phone-frame w-[264px]">
+                <video
+                  class="h-[520px] w-full rounded-[1.75rem] object-cover"
+                  src="./assets/walls/neon-portrait.mp4"
+                  poster="./assets/walls/neon-portrait.jpg"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                ></video>
+              </div>
+
+              <span class="absolute -left-5 top-8 inline-flex items-center gap-1.5 rounded-full border border-white/15 bg-black/60 px-3 py-1 text-[11px] font-medium text-white backdrop-blur">
+                <span class="size-1.5 animate-pulse rounded-full bg-rose-400"></span> LIVE
+              </span>
+
+              <div class="absolute -right-6 bottom-20 rounded-2xl border border-white/10 bg-black/70 px-3.5 py-2.5 backdrop-blur">
+                <p class="text-xs font-semibold text-white">霓虹</p>
+                <p class="mt-0.5 text-[10px] text-slate-400">720 × 1280 · 循环播放</p>
+              </div>
+            </div>
+
+            <p class="text-xs text-slate-500">动态壁纸示例 · 可随时更换</p>
+          </div>
+          </div>
+
+
+        </div>
+      </section>
+
+      <!-- ======================= 使用前必读 ======================= -->
+      <section id="start" class="scroll-mt-24 bg-white py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-600">Before you start</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">⚠️ 使用前必读</h2>
+            <p class="mt-4 text-slate-600">
+              三步就能跑起来。机器人只认 QQ 私聊，所有操作都是给机器人发一句命令。
+            </p>
+          </div>
+
+          <div class="mt-10 grid gap-5 md:grid-cols-3">
+            <article class="reveal card-hover relative rounded-2xl border border-slate-200 bg-slate-50/60 p-6">
+              <span class="absolute right-6 top-5 text-5xl font-bold text-slate-200/80">01</span>
+              <div class="grid size-11 place-items-center rounded-xl bg-white text-brand-600 shadow-sm ring-1 ring-slate-200">
+                <svg viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true">
+                  <path d="M17 20v-1a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  <circle cx="10" cy="7" r="3.2" stroke="currentColor" stroke-width="1.8" />
+                  <path d="M17 4.5a3 3 0 0 1 0 5.6M21 20v-1a3.6 3.6 0 0 0-2.6-3.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3 class="mt-5 text-lg font-semibold text-slate-900">先加 QQ 群</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">
+                群号 <span class="cmd font-semibold text-slate-900">750267127</span>。进群后再加管理员好友。
+              </p>
+            </article>
+
+            <article class="reveal card-hover relative rounded-2xl border border-slate-200 bg-slate-50/60 p-6">
+              <span class="absolute right-6 top-5 text-5xl font-bold text-slate-200/80">02</span>
+              <div class="grid size-11 place-items-center rounded-xl bg-white text-brand-600 shadow-sm ring-1 ring-slate-200">
+                <svg viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true">
+                  <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9.2 9.2 0 0 1-3.8-.8L3 21l1.9-4.6a8.1 8.1 0 0 1-1-3.9 8.4 8.4 0 0 1 8.6-8.4 8.4 8.4 0 0 1 8.5 7.4Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </div>
+              <h3 class="mt-5 text-lg font-semibold text-slate-900">加管理员、发「菜单」</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">
+                管理员是群里那个「私聊我 发菜单」的昵称。加上好友后直接私聊发
+                <span class="cmd rounded bg-white px-1.5 py-0.5 text-slate-900 ring-1 ring-slate-200">菜单</span>。
+              </p>
+            </article>
+
+            <article class="reveal card-hover relative rounded-2xl border border-slate-200 bg-slate-50/60 p-6">
+              <span class="absolute right-6 top-5 text-5xl font-bold text-slate-200/80">03</span>
+              <div class="grid size-11 place-items-center rounded-xl bg-white text-brand-600 shadow-sm ring-1 ring-slate-200">
+                <svg viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true">
+                  <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H19v18H6.5A2.5 2.5 0 0 1 4 18.5v-13Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+                  <path d="M8 7h7M8 11h7M8 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+              </div>
+              <h3 class="mt-5 text-lg font-semibold text-slate-900">按购买的项目看章节</h3>
+              <ul class="mt-2 space-y-1.5 text-sm leading-6 text-slate-600">
+                <li>买了「小米钱包」→ 看第二节</li>
+                <li>买了「小米社区」→ 看第三节</li>
+              </ul>
+            </article>
+          </div>
+
+          <div class="mt-6 rounded-2xl border border-brand-200 bg-brand-50 px-5 py-4 text-sm leading-7 text-brand-900">
+            <strong class="font-semibold">买了多个项目？</strong>
+            对应的几节都要看，命令是按项目分开的，别把「小米钱包登录」发成「小米社区登录」。
+          </div>
+
+          <div class="mt-4 rounded-2xl border-2 border-red-200 bg-red-50 p-5">
+            <div class="flex items-start gap-3">
+              <svg viewBox="0 0 24 24" fill="none" class="mt-0.5 size-6 shrink-0 text-red-600" aria-hidden="true">
+                <path d="M12 9v4m0 4h.01M10.3 3.9 2.4 17.5A1.8 1.8 0 0 0 4 20.2h16a1.8 1.8 0 0 0 1.6-2.7L13.7 3.9a1.9 1.9 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <div>
+                <h3 class="text-base font-bold text-red-700">代挂有风险，请先看完再决定</h3>
+                <p class="mt-2 text-sm leading-7 text-red-900">
+                  代挂存在<strong>一定概率黑号</strong>（账号被风控、限制或封禁）。购买的会员时长请<strong>尽早使用</strong>，不要囤。
+                </p>
+                <p class="mt-1.5 text-sm leading-7 text-red-900">
+                  如果你不愿意承担这个风险，请<strong>直接申请退款</strong>；继续代挂即表示你已知晓风险并自行承担全部后果。
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= 项目总览 ======================= -->
+      <section id="projects" class="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl">
+            <p class="text-sm font-semibold uppercase tracking-[0.2em] text-brand-600">Projects</p>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">两个项目，各跑各的</h2>
+            <p class="mt-4 text-slate-600">每个项目独立授权、独立运行；账号之间互不影响，每天跑完都会推送结果。</p>
+          </div>
+
+          <div class="mt-10 grid gap-6 lg:grid-cols-2">
+            <!-- 小米钱包 -->
+            <a
+              href="#wallet"
+              class="reveal project-card card-hover relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6"
+              style="--accent: linear-gradient(90deg, #f97316, #fbbf24)"
+            >
+              <div class="flex items-center justify-between">
+                <span class="grid size-11 place-items-center rounded-xl bg-orange-50 text-orange-600 ring-1 ring-orange-100">
+                  <svg viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true">
+                    <rect x="3" y="6" width="18" height="13" rx="2.5" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M3 10h18" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M7 15h3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                  </svg>
+                </span>
+                <span class="rounded-full bg-orange-50 px-2.5 py-1 text-xs font-medium text-orange-700">每日 8:30</span>
+              </div>
+              <h3 class="mt-5 text-xl font-semibold text-slate-900">小米钱包</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">
+                自动完成钱包日常任务。刷完当天任务后，组件里可能还剩一个 10 秒广告，属正常现象。
+              </p>
+              <ul class="mt-4 space-y-1.5 text-sm text-slate-500">
+                <li>· 5 条常用命令</li>
+                <li>· 支持扫码 / passToken 登录</li>
+                <li>· 附带两张必看提示图</li>
+              </ul>
+              <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600">
+                查看第二节
+                <svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+
+            <!-- 小米社区 -->
+            <a
+              href="#community"
+              class="reveal project-card card-hover relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6"
+              style="--accent: linear-gradient(90deg, #fb7185, #f97316)"
+            >
+              <div class="flex items-center justify-between">
+                <span class="grid size-11 place-items-center rounded-xl bg-rose-50 text-rose-600 ring-1 ring-rose-100">
+                  <svg viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true">
+                    <circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.8" />
+                    <path d="M12 3.5c2.5 2.4 3.8 5.4 3.8 8.5S14.5 18.1 12 20.5c-2.5-2.4-3.8-5.4-3.8-8.5S9.5 5.9 12 3.5Z" stroke="currentColor" stroke-width="1.6" />
+                    <path d="M3.5 12h17" stroke="currentColor" stroke-width="1.6" />
+                  </svg>
+                </span>
+                <span class="rounded-full bg-rose-50 px-2.5 py-1 text-xs font-medium text-rose-700">每日 8:10</span>
+              </div>
+              <h3 class="mt-5 text-xl font-semibold text-slate-900">小米社区</h3>
+              <p class="mt-2 text-sm leading-7 text-slate-600">
+                App 签到、浏览帖子、小程序签到、拔萝卜领金币，跑完推送「等级 + 成长值 + 金币」。
+              </p>
+              <ul class="mt-4 space-y-1.5 text-sm text-slate-500">
+                <li>· 7 条常用命令</li>
+                <li>· 每个账号独立出口 IP</li>
+                <li>· 支持「删除 序号」快速删号</li>
+              </ul>
+              <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-brand-600">
+                查看第三节
+                <svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true">
+                  <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </span>
+            </a>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= 第一节 总菜单 ======================= -->
+      <section id="menu" class="scroll-mt-24 bg-white py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-wrap items-end justify-between gap-4">
+            <div class="max-w-2xl">
+              <span class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white">第一节</span>
+              <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">总菜单（所有项目入口）</h2>
+              <p class="mt-4 text-slate-600">
+                任何时候给机器人发
+                <span class="cmd rounded bg-slate-100 px-1.5 py-0.5 font-semibold text-slate-900">菜单</span>，它会回复你名下所有项目，以及进入该项目要发的命令。
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-10 overflow-hidden rounded-2xl border border-slate-200">
+            <table class="min-w-full divide-y divide-slate-200 text-sm">
+              <thead class="bg-slate-50">
+                <tr>
+                  <th class="px-5 py-3.5 text-left font-semibold text-slate-900">项目</th>
+                  <th class="px-5 py-3.5 text-left font-semibold text-slate-900">进入项目的命令</th>
+                  <th class="hidden px-5 py-3.5 text-left font-semibold text-slate-900 sm:table-cell">说明</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-100 bg-white">
+                <tr>
+                  <td class="px-5 py-4 font-medium text-slate-900">总入口</td>
+                  <td class="px-5 py-4"><code class="cmd rounded-md bg-slate-100 px-2 py-1 text-slate-900">菜单</code></td>
+                  <td class="hidden px-5 py-4 text-slate-600 sm:table-cell">查看所有项目</td>
+                </tr>
+                <tr>
+                  <td class="px-5 py-4 font-medium text-slate-900">小米钱包</td>
+                  <td class="px-5 py-4 leading-8">
+                    <code class="cmd rounded-md bg-slate-100 px-2 py-1 text-slate-900">小米钱包登录</code>
+                    <code class="cmd rounded-md bg-slate-100 px-2 py-1 text-slate-900">小米钱包管理</code>
+                    <code class="cmd rounded-md bg-slate-100 px-2 py-1 text-slate-900">小米钱包查询</code>
+                  </td>
+                  <td class="hidden px-5 py-4 text-slate-600 sm:table-cell">进入小米钱包项目</td>
+                </tr>
+                <tr>
+                  <td class="px-5 py-4 font-medium text-slate-900">小米社区</td>
+                  <td class="px-5 py-4 leading-8">
+                    <code class="cmd rounded-md bg-slate-100 px-2 py-1 text-slate-900">小米社区登录</code>
+                    <code class="cmd rounded-md bg-slate-100 px-2 py-1 text-slate-900">小米社区管理</code>
+                    <code class="cmd rounded-md bg-slate-100 px-2 py-1 text-slate-900">小米社区查询</code>
+                  </td>
+                  <td class="hidden px-5 py-4 text-slate-600 sm:table-cell">进入小米社区项目</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p class="mt-4 text-sm text-slate-500">以后新增项目，会在「菜单」里更新，本页也会同步补充。</p>
+        </div>
+      </section>
+
+      <!-- ======================= 第二节 小米钱包 ======================= -->
+      <section id="wallet" class="scroll-mt-24 bg-slate-50 py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <span class="inline-flex items-center gap-2 rounded-full bg-orange-100 px-3 py-1 text-xs font-semibold text-orange-700">第二节</span>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">小米钱包（代挂）</h2>
+          </div>
+
+          <div class="mt-8 rounded-2xl border border-amber-200 bg-amber-50/80 p-6">
+            <div class="flex gap-4">
+              <span class="mt-0.5 grid size-9 shrink-0 place-items-center rounded-lg bg-amber-100 text-amber-700">
+                <svg viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true">
+                  <path d="M12 8v5" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                  <circle cx="12" cy="16.5" r="1" fill="currentColor" />
+                  <path d="M10.3 3.9 2.9 17a2 2 0 0 0 1.7 3h14.8a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" />
+                </svg>
+              </span>
+              <div class="text-sm leading-7 text-amber-900">
+                <p class="font-semibold">注意：关于最后那个 10 秒广告</p>
+                <p class="mt-2">
+                  每天刷完过后，如果你上号看到小米组件里还有个 10 秒广告没有做（最高有三个 10 秒广告，正常情况只做两个），
+                  那是因为最后一个 10 秒广告需要你每天<strong class="font-semibold">手动进入小米钱包的组件</strong>，服务端才会下发。
+                  所以如果你在机器人刷之前进入过小米钱包组件，那个任务就可以帮你刷掉。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 必看两张图 -->
+          <div class="mt-12">
+            <h3 class="text-2xl font-bold tracking-tight text-slate-900">⚠️ 必看 · 两张图一定要先看</h3>
+            <p class="mt-3 max-w-3xl text-slate-600">
+              遇到下面这两种提示，都是正常的，按图里说的做就行，不用来问，也不影响使用。这是大家问得最多的两个问题，所以放在最前面。
+            </p>
+
+            <div class="mt-8 grid gap-8 lg:grid-cols-2">
+              <figure class="reveal flex flex-col gap-5 rounded-2xl border border-slate-200 bg-white p-5 sm:flex-row sm:items-start">
+                <div class="phone-frame mx-auto w-[190px] shrink-0 sm:mx-0">
+                  <img src="./assets/img001.jpg" alt="扫码登录时提示页面加载失败的截图" loading="lazy" width="485" height="1080" />
+                </div>
+                <figcaption class="text-sm leading-7 text-slate-600">
+                  <p class="text-base font-semibold text-slate-900">提示 1 · 扫码时「页面加载失败」</p>
+                  <p class="mt-2">
+                    这是小米 / 天星金融系统升级导致的，跟你本人、跟机器人没有任何关系，不用慌。
+                  </p>
+                  <p class="mt-3 rounded-lg bg-slate-50 px-3 py-2 ring-1 ring-slate-100">
+                    换一个入口扫码就行：<strong class="text-slate-900">微信扫码</strong>、<strong class="text-slate-900">小米商城</strong>、
+                    <strong class="text-slate-900">小米社区</strong>，三个效果完全一样，照样登录成功。
+                  </p>
+                </figcaption>
+              </figure>
+
+              <figure class="reveal flex flex-col gap-5 rounded-2xl border border-slate-200 bg-white p-5 sm:flex-row sm:items-start">
+                <div class="phone-frame mx-auto w-[190px] shrink-0 sm:mx-0">
+                  <img src="./assets/img002.jpg" alt="添加管理员时弹出安全提醒的截图" loading="lazy" width="485" height="1080" />
+                </div>
+                <figcaption class="text-sm leading-7 text-slate-600">
+                  <p class="text-base font-semibold text-slate-900">提示 2 · 加管理员「安全提醒」</p>
+                  <p class="mt-2">
+                    提示「对方账号已被他人举报存在异常行为」，是因为加的人太多了被系统风控误报，不是真的有问题。
+                  </p>
+                  <p class="mt-3 rounded-lg bg-slate-50 px-3 py-2 ring-1 ring-slate-100">
+                    看到弹窗直接点<strong class="text-slate-900">「了解详情」</strong>，然后照常添加、照常发命令。
+                  </p>
+                  <p class="mt-3">
+                    如果不放心，不用商量，直接去闲鱼申请「与卖家协商一致退款」，货款原路退回。
+                  </p>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <!-- 命令速查 -->
+          <div class="mt-14">
+            <h3 class="text-2xl font-bold tracking-tight text-slate-900">2.1　命令速查</h3>
+            <p class="mt-2 text-sm text-slate-500">点右侧按钮可直接复制命令。</p>
+
+            <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-orange-50 px-2 py-1 text-sm font-semibold text-orange-700">小米钱包登录</code>
+                <span class="text-sm text-slate-600">提交账号（首次使用 / 换新号时发这个）</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米钱包登录" aria-label="复制小米钱包登录">
+                  <svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-orange-50 px-2 py-1 text-sm font-semibold text-orange-700">小米钱包管理</code>
+                <span class="text-sm text-slate-600">账号删除 / 账号授权 / 查看账号状态</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米钱包管理" aria-label="复制小米钱包管理">
+                  <svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-orange-50 px-2 py-1 text-sm font-semibold text-orange-700">小米钱包查询</code>
+                <span class="text-sm text-slate-600">查当日收益（读缓存，秒回）</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米钱包查询" aria-label="复制小米钱包查询">
+                  <svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-orange-50 px-2 py-1 text-sm font-semibold text-orange-700">小米钱包账号</code>
+                <span class="text-sm text-slate-600">看自己已绑定的账号列表</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米钱包账号" aria-label="复制小米钱包账号">
+                  <svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-orange-50 px-2 py-1 text-sm font-semibold text-orange-700">小米钱包教程</code>
+                <span class="text-sm text-slate-600">使用帮助</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米钱包教程" aria-label="复制小米钱包教程">
+                  <svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- 操作步骤 -->
+          <div class="mt-14">
+            <h3 class="text-2xl font-bold tracking-tight text-slate-900">2.2　操作步骤</h3>
+            <ol class="mt-6 space-y-4 border-l border-slate-200 pl-6 sm:pl-8">
+              <li class="relative">
+                <span class="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-orange-500 text-xs font-semibold text-white sm:-left-[39px]">1</span>
+                <p class="text-slate-700">发「小米钱包登录」，按提示提交账号（扫码 或 提交 passToken）。</p>
+              </li>
+              <li class="relative">
+                <span class="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-orange-500 text-xs font-semibold text-white sm:-left-[39px]">2</span>
+                <p class="text-slate-700">提交成功后，发「小米钱包管理」→ 回复数字 <strong>2</strong>（账号授权）提交授权申请。</p>
+              </li>
+              <li class="relative">
+                <span class="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-orange-500 text-xs font-semibold text-white sm:-left-[39px]">3</span>
+                <p class="text-slate-700">等待管理员审核，通过后默认赠送 <strong>31 天</strong>授权，机器人会通知你。</p>
+              </li>
+              <li class="relative">
+                <span class="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-orange-500 text-xs font-semibold text-white sm:-left-[39px]">4</span>
+                <p class="text-slate-700">之后每天 <strong>8:30</strong> 自动运行；想看收益发「小米钱包查询」。</p>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= 第三节 小米社区 ======================= -->
+      <section id="community" class="scroll-mt-24 bg-white py-16 sm:py-20">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div class="max-w-3xl">
+            <span class="inline-flex items-center gap-2 rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700">第三节</span>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">小米社区（代挂）</h2>
+            <p class="mt-4 text-slate-600">
+              每天自动做完这些：App 签到、浏览帖子 10 秒、微信小程序签到、拔萝卜领金币。每种账号用自己的独立出口 IP，
+              跑完把「等级 + 成长值 + 金币」推给你。
+            </p>
+          </div>
+
+          <!-- 每天跑什么 -->
+          <div class="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            <div class="reveal rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
+              <p class="text-xs font-medium text-slate-500">App 签到</p>
+              <p class="mt-2 text-lg font-semibold text-slate-900">+ 成长值</p>
+            </div>
+            <div class="reveal rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
+              <p class="text-xs font-medium text-slate-500">浏览帖子 10 秒</p>
+              <p class="mt-2 text-lg font-semibold text-slate-900">+1 成长值 +1 金币</p>
+            </div>
+            <div class="reveal rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
+              <p class="text-xs font-medium text-slate-500">微信小程序签到</p>
+              <p class="mt-2 text-lg font-semibold text-slate-900">+3 成长值</p>
+            </div>
+            <div class="reveal rounded-2xl border border-slate-200 bg-slate-50/70 p-5">
+              <p class="text-xs font-medium text-slate-500">拔萝卜领金币</p>
+              <p class="mt-2 text-lg font-semibold text-slate-900">每天 1 个金币</p>
+            </div>
+          </div>
+
+          <div class="mt-14">
+            <h3 class="text-2xl font-bold tracking-tight text-slate-900">3.1　命令速查</h3>
+            <ul class="mt-6 grid gap-3 sm:grid-cols-2">
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-rose-50 px-2 py-1 text-sm font-semibold text-rose-700">小米社区登录</code>
+                <span class="text-sm text-slate-600">提交账号（首次使用 / 换新号时发这个）</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米社区登录" aria-label="复制小米社区登录"><svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-rose-50 px-2 py-1 text-sm font-semibold text-rose-700">小米社区管理</code>
+                <span class="text-sm text-slate-600">账号删除 / 账号授权 / 查看账号状态</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米社区管理" aria-label="复制小米社区管理"><svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-rose-50 px-2 py-1 text-sm font-semibold text-rose-700">小米社区查询</code>
+                <span class="text-sm text-slate-600">查签到结果（等级 / 成长值 / 金币，读缓存秒回）</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米社区查询" aria-label="复制小米社区查询"><svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-rose-50 px-2 py-1 text-sm font-semibold text-rose-700">小米社区账号</code>
+                <span class="text-sm text-slate-600">看自己已绑定的账号列表</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米社区账号" aria-label="复制小米社区账号"><svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-rose-50 px-2 py-1 text-sm font-semibold text-rose-700">小米社区删除 序号</code>
+                <span class="text-sm text-slate-600">快速删除某个账号（例：小米社区删除 1）</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米社区删除 1" aria-label="复制小米社区删除命令"><svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-rose-50 px-2 py-1 text-sm font-semibold text-rose-700">小米社区状态</code>
+                <span class="text-sm text-slate-600">运行自检（排查问题用）</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米社区状态" aria-label="复制小米社区状态"><svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+              </li>
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-4 py-3.5">
+                <code class="cmd shrink-0 rounded-md bg-rose-50 px-2 py-1 text-sm font-semibold text-rose-700">小米社区教程</code>
+                <span class="text-sm text-slate-600">使用帮助</span>
+                <button class="copy-btn ml-auto shrink-0 rounded-md p-2 text-slate-400 hover:bg-slate-100 hover:text-slate-700" data-copy="小米社区教程" aria-label="复制小米社区教程"><svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><path d="M5 15V5a2 2 0 0 1 2-2h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+              </li>
+            </ul>
+          </div>
+
+          <div class="mt-14 grid gap-10 lg:grid-cols-2">
+            <div>
+              <h3 class="text-2xl font-bold tracking-tight text-slate-900">3.2　操作步骤</h3>
+              <ol class="mt-6 space-y-4 border-l border-slate-200 pl-6 sm:pl-8">
+                <li class="relative"><span class="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-rose-500 text-xs font-semibold text-white sm:-left-[39px]">1</span><p class="text-slate-700">发「小米社区登录」→ 回复 <strong>1</strong> 扫码登录（推荐，用小米手机扫二维码）。</p></li>
+                <li class="relative"><span class="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-rose-500 text-xs font-semibold text-white sm:-left-[39px]">2</span><p class="text-slate-700">也可以回复 <strong>2</strong> 提交 passToken，格式一行一个：<code class="cmd rounded bg-slate-100 px-1.5 py-0.5 text-slate-900">userId#passToken</code>。</p></li>
+                <li class="relative"><span class="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-rose-500 text-xs font-semibold text-white sm:-left-[39px]">3</span><p class="text-slate-700">提交成功后，发「小米社区管理」→ 回复 <strong>2</strong>（账号授权）提交授权申请。</p></li>
+                <li class="relative"><span class="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-rose-500 text-xs font-semibold text-white sm:-left-[39px]">4</span><p class="text-slate-700">等待管理员审核，通过后默认赠送 <strong>31 天</strong>授权，机器人会通知你。</p></li>
+                <li class="relative"><span class="absolute -left-[31px] top-1 grid size-6 place-items-center rounded-full bg-rose-500 text-xs font-semibold text-white sm:-left-[39px]">5</span><p class="text-slate-700">之后每天 <strong>8:10</strong> 左右自动运行；想看结果发「小米社区查询」。</p></li>
+              </ol>
+            </div>
+
+            <div>
+              <h3 class="text-2xl font-bold tracking-tight text-slate-900">3.3　注意事项</h3>
+              <ul class="mt-6 space-y-3">
+                <li class="flex gap-3 rounded-xl border border-slate-200 bg-slate-50/60 p-4 text-sm leading-7 text-slate-700">
+                  <span class="mt-1 size-1.5 shrink-0 rounded-full bg-rose-400"></span>
+                  <span>passToken 有效期一般几十天，失效时机器人会提醒你重新扫码，重新发「小米社区登录」更新即可，授权状态保留。</span>
+                </li>
+                <li class="flex gap-3 rounded-xl border border-slate-200 bg-slate-50/60 p-4 text-sm leading-7 text-slate-700">
+                  <span class="mt-1 size-1.5 shrink-0 rounded-full bg-rose-400"></span>
+                  <span>每天任务是固定的，跑完不会多给；连续签到天数越多，等级成长越快。</span>
+                </li>
+                <li class="flex gap-3 rounded-xl border border-slate-200 bg-slate-50/60 p-4 text-sm leading-7 text-slate-700">
+                  <span class="mt-1 size-1.5 shrink-0 rounded-full bg-rose-400"></span>
+                  <span>8:10 的自动运行偶尔会慢几分钟（要过一次人机验证），属于正常，不用手动补。</span>
+                </li>
+                <li class="flex gap-3 rounded-xl border border-slate-200 bg-slate-50/60 p-4 text-sm leading-7 text-slate-700">
+                  <span class="mt-1 size-1.5 shrink-0 rounded-full bg-rose-400"></span>
+                  <span>有任何异常，发「小米社区查询」看到的结果就是最后一次运行的真实状态。</span>
+                </li>
+                <li class="flex gap-3 rounded-xl border border-slate-200 bg-slate-50/60 p-4 text-sm leading-7 text-slate-700">
+                  <span class="mt-1 size-1.5 shrink-0 rounded-full bg-rose-400"></span>
+                  <span>当天已经跑成功过、又被管理员补跑一次时，消息里会标「补跑」，“今日成长”只按当天第一次跑的结果算，不会重复累计。</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================= 免责声明 ======================= -->
+      <section id="disclaimer" class="scroll-mt-24 bg-ink-950 py-16 sm:py-20">
+        <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <p class="text-sm font-semibold uppercase tracking-[0.2em] text-amber-400">Disclaimer</p>
+          <h2 class="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl">免责声明</h2>
+
+          <div class="mt-6 rounded-2xl border border-amber-500/30 bg-amber-500/10 p-5 text-sm leading-7 text-amber-100">
+            代挂有风险：存在账号被风控、限制或封禁的概率。购买的会员时长请尽早使用；如不愿承担该风险，请申请退款。继续代挂即表示你已知晓并自行承担全部风险。
+          </div>
+
+          <ol class="mt-8 space-y-4 text-sm leading-7 text-slate-300">
+            <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-semibold text-white">1</span><span>脚本都是从 GitHub / 互联网里找的，或者都是 AI 写的。</span></li>
+            <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-semibold text-white">2</span><span>所发布的内容仅供学习，禁止用于其他用途。您必须在下载后的 24 小时内从计算机或手机中完全删除以上内容。严禁产生利益链！</span></li>
+            <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-semibold text-white">3</span><span>作者对任何问题概不负责，包括但不限于由任何脚本错误导致的任何损失或损害。间接使用脚本的任何用户，包括但不限于建立 VPS 或在某些行为违反国家/地区法律或相关法规的情况下进行传播。</span></li>
+            <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-semibold text-white">4</span><span>作者对于由此引起的任何隐私泄漏或其他后果概不负责。如果任何单位或个人认为该项目的脚本可能涉嫌侵犯其权利，则应及时通知并提供身份证明、所有权证明，我们将在收到认证文件后删除相关脚本。</span></li>
+            <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-semibold text-white">5</span><span>任何以任何方式查看此项目的人，或直接、间接使用该项目任何脚本的使用者，都应仔细阅读此声明。</span></li>
+            <li class="flex gap-3"><span class="mt-0.5 grid size-6 shrink-0 place-items-center rounded-full bg-white/10 text-xs font-semibold text-white">6</span><span>请遵守相关法律法规，尊重目标平台的服务条款。</span></li>
+          </ol>
+
+          <p class="mt-8 text-xs leading-6 text-slate-500">
+            继续使用本页面及机器人服务，即视为你已阅读、理解并同意以上全部条款。
+          </p>
+        </div>
+      </section>
+
+      <!-- ======================= 第四节 常见问题 ======================= -->
+      <section id="faq" class="scroll-mt-24 bg-white py-16 sm:py-20">
+        <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <span class="inline-flex items-center gap-2 rounded-full bg-slate-900 px-3 py-1 text-xs font-medium text-white">第四节</span>
+            <h2 class="mt-3 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">常见问题</h2>
+            <p class="mt-4 text-slate-600">还有没写到的，直接在群里问，或发「XX教程」看机器人自带帮助。</p>
+          </div>
+
+          <div class="mt-10 space-y-3">
+            <details class="group rounded-2xl border border-slate-200 bg-slate-50/60 p-1 [&_summary::-webkit-details-marker]:hidden" open>
+              <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-xl px-5 py-4 text-slate-900">
+                <h3 class="text-base font-semibold">授权有效期多久？到期了怎么办？</h3>
+                <svg aria-hidden="true" class="size-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <p class="px-5 pb-5 text-sm leading-7 text-slate-600">
+                默认 31 天。到期前 2 天、前 1 天、当天，机器人都会提醒你续期（发对应「XX管理」→ 回复 2 续期）。到期后没续就不跑了。
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-slate-50/60 p-1 [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-xl px-5 py-4 text-slate-900">
+                <h3 class="text-base font-semibold">查询会去 APP 上操作、影响我账号吗？</h3>
+                <svg aria-hidden="true" class="size-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <p class="px-5 pb-5 text-sm leading-7 text-slate-600">
+                不会。查询读的是机器人运行完的本地结果缓存（并标注了运行日期），不请求 APP、不消耗登录、不影响你正常使用。
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-slate-50/60 p-1 [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-xl px-5 py-4 text-slate-900">
+                <h3 class="text-base font-semibold">提交账号后多久能跑？</h3>
+                <svg aria-hidden="true" class="size-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <p class="px-5 pb-5 text-sm leading-7 text-slate-600">
+                管理员审核通过后立即生效，之后每天早上自动运行一次（小米钱包 8:30，小米社区 8:10 左右）。
+              </p>
+            </details>
+
+            <details class="group rounded-2xl border border-slate-200 bg-slate-50/60 p-1 [&_summary::-webkit-details-marker]:hidden">
+              <summary class="flex cursor-pointer items-center justify-between gap-4 rounded-xl px-5 py-4 text-slate-900">
+                <h3 class="text-base font-semibold">忘记命令了怎么办？</h3>
+                <svg aria-hidden="true" class="size-5 shrink-0 text-slate-400 transition-transform duration-300 group-open:-rotate-180" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+              </summary>
+              <p class="px-5 pb-5 text-sm leading-7 text-slate-600">
+                随时发「菜单」，或发对应项目的「XX教程」。
+              </p>
+            </details>
+          </div>
+
+          <div class="mt-10 rounded-2xl bg-slate-900 px-6 py-8 text-center">
+            <p class="text-sm text-slate-400">还有问题？</p>
+            <p class="mt-2 text-xl font-semibold text-white">加群 <span class="cmd text-brand-300">750267127</span></p>
+            <p class="mt-3 text-sm leading-7 text-slate-400">
+              进群后加管理员好友（群昵称「私聊我 发菜单」），直接私聊发命令即可。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ======================= 页脚 ======================= -->
+    <footer class="border-t border-slate-200 bg-white">
+      <div class="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div class="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
+          <div class="max-w-md">
+            <div class="flex items-center gap-2.5">
+              <span class="grid size-8 place-items-center rounded-lg bg-gradient-to-br from-brand-500 to-amber-400 text-white">
+                <svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true">
+                  <path d="M12 3v3m0 12v3M4.2 4.2l2.1 2.1m11.4 11.4 2.1 2.1M3 12h3m12 0h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                  <circle cx="12" cy="12" r="3.2" stroke="currentColor" stroke-width="1.8"/>
+                </svg>
+              </span>
+              <span class="font-semibold text-slate-900">代挂机器人使用说明</span>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-slate-500">
+              本页为《代挂机器人使用说明》的网页版，方便在手机上查看和复制命令。
+              内容以机器人实际回复为准，如有更新以群内通知为准。
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-8 text-sm sm:gap-12">
+            <div>
+              <p class="font-medium text-slate-900">项目</p>
+              <ul class="mt-4 space-y-2 text-slate-500">
+                <li><a class="transition hover:text-slate-900" href="#wallet">小米钱包</a></li>
+                <li><a class="transition hover:text-slate-900" href="#community">小米社区</a></li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-medium text-slate-900">帮助</p>
+              <ul class="mt-4 space-y-2 text-slate-500">
+                <li><a class="transition hover:text-slate-900" href="#menu">总菜单</a></li>
+                <li><a class="transition hover:text-slate-900" href="#faq">常见问题</a></li>
+                <li><a class="transition hover:text-slate-900" href="#start">使用前必读</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-col gap-3 border-t border-slate-100 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+          <p>© <span id="year">2026</span> 代挂机器人 · 使用说明</p>
+          <p>QQ 群 750267127 · 管理员「私聊我 发菜单」</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- 回到顶部 -->
+    <button
+      id="to-top"
+      type="button"
+      class="no-print fixed bottom-6 right-6 z-40 grid size-11 translate-y-3 place-items-center rounded-full bg-slate-900 text-white opacity-0 shadow-lg transition hover:bg-slate-700"
+      aria-label="回到顶部"
+    >
+      <svg viewBox="0 0 24 24" fill="none" class="size-5" aria-hidden="true">
+        <path d="M12 19V5m-6 6 6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+
+    <script>
+      document.documentElement.classList.remove('no-js');
+      // 年份
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // 移动端菜单
+      const menuBtn = document.getElementById('menu-btn');
+      const mobileNav = document.getElementById('mobile-nav');
+      menuBtn?.addEventListener('click', () => {
+        const open = mobileNav.classList.toggle('hidden');
+        menuBtn.setAttribute('aria-expanded', String(!open));
+      });
+      mobileNav?.querySelectorAll('a').forEach((a) =>
+        a.addEventListener('click', () => {
+          mobileNav.classList.add('hidden');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        }),
+      );
+
+      // 复制命令
+      async function copyText(text) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.opacity = '0';
+          document.body.appendChild(ta);
+          ta.select();
+          const ok = document.execCommand('copy');
+          ta.remove();
+          return ok;
+        }
+      }
+
+      document.querySelectorAll('.copy-btn').forEach((btn) => {
+        btn.addEventListener('click', async () => {
+          const text = btn.dataset.copy || '';
+          const ok = await copyText(text);
+          if (!ok) return;
+          const original = btn.innerHTML;
+          btn.classList.add('is-done');
+          btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" class="size-4" aria-hidden="true"><path d="M20 6 9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="sr-only">已复制</span>';
+          setTimeout(() => {
+            btn.classList.remove('is-done');
+            btn.innerHTML = original;
+          }, 1600);
+        });
+      });
+
+      // 滚动出现动画
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+      );
+      document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+      // 导航高亮
+      const sections = [...document.querySelectorAll('main section[id]')];
+      const navLinks = [...document.querySelectorAll('.nav-link')];
+      const setActive = () => {
+        const y = window.scrollY + 120;
+        let current = '';
+        for (const s of sections) {
+          if (s.offsetTop <= y) current = s.id;
+        }
+        navLinks.forEach((l) => {
+          l.setAttribute('aria-current', String(l.getAttribute('href') === '#' + current));
+        });
+      };
+      window.addEventListener('scroll', setActive, { passive: true });
+      setActive();
+
+      // 回到顶部
+      const toTop = document.getElementById('to-top');
+      const onScroll = () => {
+        const show = window.scrollY > 600;
+        toTop.style.opacity = show ? '1' : '0';
+        toTop.style.transform = show ? 'none' : 'translateY(0.75rem)';
+        toTop.style.pointerEvents = show ? 'auto' : 'none';
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+      onScroll();
+    </script>
+  
+  <script>
+    (function () {
+      var gate = document.getElementById('gate');
+      var btn = document.getElementById('gate-btn');
+      var num = document.getElementById('gate-count');
+      if (!gate || !btn) return;
+      document.body.classList.add('overflow-hidden');
+      var left = 10;
+      var timer = setInterval(function () {
+        left -= 1;
+        if (left > 0) {
+          num.textContent = String(left);
+        } else {
+          clearInterval(timer);
+          btn.disabled = false;
+          btn.textContent = '我已阅读并知晓风险，继续访问';
+          btn.classList.remove('cursor-not-allowed', 'bg-brand-500/40', 'text-white/60');
+          btn.classList.add('bg-brand-500', 'hover:bg-brand-600', 'text-white');
+        }
+      }, 1000);
+      btn.addEventListener('click', function () {
+        if (btn.disabled) return;
+        gate.remove();
+        document.body.classList.remove('overflow-hidden');
+      });
+    })();
+  </script>
+</body>
+</html>
